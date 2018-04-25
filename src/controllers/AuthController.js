@@ -1,12 +1,12 @@
 const AuthServices = require('../services/AuthServices');
 
 class AuthController {
-
+  
   /*
    * renderLoginView()
    * 
    * Renders login view. If user is already authenticated then we will just redirect to the main view.
-   * If you have more views that are for unauthorized people only, then this redirect logic should be moved to middleware.
+   * If you have more views that are meant for unauthorized people only, then this redirect logic should be moved to middleware.
    */
   renderLoginView(req, res) {
     if (req.session.loggedIn) return res.redirect('/');
@@ -27,8 +27,13 @@ class AuthController {
   /*
    * oauthCallback()
    * 
-   * This function handles oauth callback. 
-   * We will try to log in with the code received from oauth.
+   * After oauth steps, user will be redirected to this url. We will check if the user got permissions needed or not.
+   * If the authentication was successful then we can use 'code' to fetch access token and log in with the user.
+   * 
+   * This callback can contain following query params:
+   * code - If requested access was successfully granted to your app, this value is set. You can use this code for getting access token.
+   * error - If requested access was not successful, this value is set.
+   * state - If you passed state in the beginning of process, you'll receive it back here.
    */
   async oauthCallback(req, res) {
     const { code, error } = req.query;

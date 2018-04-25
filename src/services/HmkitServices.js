@@ -6,7 +6,6 @@ class HmkitServices {
   constructor() {
     const { clientCertificate, clientPrivateKey } = config.hm;
     this.hmkit = new HMKit(clientCertificate, clientPrivateKey);
-    // this.hmkit.api.url = 'https://localhost:4443/hm_cloud/api/v1/';
   }
 
   getDiagnostics(session) {

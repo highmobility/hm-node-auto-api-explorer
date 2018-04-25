@@ -1,5 +1,3 @@
-// process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-
 const express = require('express');
 const session = require('express-session');
 const aa = require('express-async-await');
@@ -19,9 +17,6 @@ const app = aa(express());
  */
 app.use(express.static('public'));
 app.use(session(config.session));
-
-// TESTING
-app.use(visitorCounterMiddleware);
 
 /*
  * Mustache templating engine
