@@ -1,0 +1,21 @@
+{
+  "name": "hm-node-auto-api-explorer",
+  "version": "1.0.0",
+  "description": "High Mobility example app to show OAuth and HMKit use case.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^5.0.1",
+    "eslint": "^4.19.1",
+    "express": "^4.16.3",
+    "express-async-await": "^1.1.0",
+    "express-session": "^1.15.6",
+    "hmkit": "^0.4.0",
+    "mustache": "^2.3.0",
+    "mustache-express": "^1.2.5",
+    "node-fetch": "^2.1.2"
+  }
+}
