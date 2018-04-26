@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+
+<%- include('../partials/head') %>
+
+<body>
+    <main>
+        <div>
+            <form action="/logout" method="post">
+                <button type="submit">LOG OUT</button>
+            </form>
+
+            <div class="car-grid">
+                <section class="card section--tires">
+                    <h2>Tires</h2>
+                    <div class="tires--list">
+                        <% diagnostics.tires.forEach((tire) =>{ %>
+                            <div class="tire--block">
+                                <h4><%= tire.label %></h4>
+                                <%- include('../partials/property', { label: 'Pressure', value: tire.pressure, unit: 'BAR'}); %>
+                                <%- include('../partials/property', { label: 'Temperature', value: tire.temperature, unit: '°C'}); %>
+                                <%- include('../partials/property', { label: 'RPM', value: tire.rpm, unit: 'RPM'}); %>
+                            </div>
+                        <% }); %>
+                    </div>
+                </section>
+
+                <section class="card section--diagnostics">
+                    <h2>Diagnostics</h2>
+                    <div>
+                        <%- include('../partials/property', { label: 'Mileage', value: diagnostics.mileage, unit: 'km'}); %>
+                        <%- include('../partials/property', { label: 'Engine RPM', value: diagnostics.engineRPM, unit: 'RPM'}); %>
+                        <%- include('../partials/property', { label: 'Oil temperature', value: diagnostics.engineOilTemperature, unit: '°C'}); %>
+                        <%- include('../partials/property', { label: 'Fuel level', value: diagnostics.fuelLevel, unit: '%'}); %>
+                        <%- include('../partials/property', { label: 'Estimated range', value: diagnostics.estimatedRange, unit: 'km'}); %>
+                        <%- include('../partials/property', { label: 'Current fuel consumption', value: diagnostics.currentFuelConsumption, unit: 'l'}); %>
+                        <%- include('../partials/property', { label: 'Average fuel consumption', value: diagnostics.averageFuelConsumption, unit: 'l'}); %>
+                        <%- include('../partials/property', { label: 'Washer fluid level', value: diagnostics.washerFluidLevel, unit: '' }); %>
+                        <%- include('../partials/property', { label: 'Battery voltage', value: diagnostics.batteryVoltage, unit: 'V'}); %>
+                        <%- include('../partials/property', { label: 'AdBlue level', value: diagnostics.adblueLevel, unit: 'l'}); %>
+                        <%- include('../partials/property', { label: 'Distance since reset', value: diagnostics.distanceSinceReset, unit: 'km'}); %>
+                        <%- include('../partials/property', { label: 'Distance since start', value: diagnostics.distanceSinceStart, unit: 'km'}); %>
+                    </div>
+                </section>
+
+                <section class="card section--doors">
+                    <header class="header">
+                        <h2>Doors</h2>
+
+                        <div class="header--actions">
+                            <form action="/doors/unlock" method="post">
+                                <button type="submit">Unlock</button>
+                            </form>
+                            <form action="/doors/lock" method="post">
+                                <button type="submit">Lock</button>
+                            </form>
+                        </div>
+                    </header>
+                    <div class="doors--list">
+                         <% doors.forEach((door) =>{ %>
+                            <div class="door--block">
+                                <h4><%= door.label %></h4>
+                                <%- include('../partials/property', { label: 'State', value: door.state, unit: '' }); %>
+                                <%- include('../partials/property', { label: 'Lock', value: door.lock, unit: '' }); %>
+                            </div>
+                        <% }); %>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -12,7 +12,7 @@ class CarController {
     const diagnostics = await CarServices.getMappedDiagnosticsData(req.session);
     const doors = await CarServices.getMappedDoorLocksData(req.session);
     
-    res.render('views/car', { diagnostics, doors });
+    res.render('pages/car.ejs', { diagnostics, doors });
   }
   
   /*

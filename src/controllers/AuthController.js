@@ -11,7 +11,7 @@ class AuthController {
   renderLoginView(req, res) {
     if (req.session.loggedIn) return res.redirect('/');
 
-    res.render('views/login', { loginUrl: AuthServices.getOauthUrl() });
+    res.render('pages/login.ejs', { loginUrl: AuthServices.getOauthUrl() });
   }
 
   /*

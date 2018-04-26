@@ -1,11 +1,18 @@
 const express = require('express');
 const session = require('express-session');
 const aa = require('express-async-await');
-const mustacheExpress = require('mustache-express');
 const router = require('./src/router');
 const config = require('./src/config');
 
 const app = aa(express());
+
+/*
+ * EJS templating engine
+ * 
+ * We register templating engine and templates path.
+ */
+app.set('view engine', 'ejs');
+app.set('views', `${__dirname}/src/templates`);
 
 /*
  * Middleware
@@ -16,17 +23,6 @@ const app = aa(express());
 app.use(express.static('public'));
 app.use(session(config.session));
 
-/*
- * Mustache templating engine
- * 
- * We register templates path and the main layout.
- */
-app.engine('mustache', mustacheExpress());
-app.set('view engine', 'mustache');
-app.set('views', `${__dirname}/src/templates`);
-app.set('layout', 'layout');
-
-// Routes
 app.use('', router);
 
 app.listen(config.app.port, () => {
