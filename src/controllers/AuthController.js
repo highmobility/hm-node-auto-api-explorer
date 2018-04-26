@@ -40,7 +40,7 @@ class AuthController {
 
     if (!!error || !code) res.redirect('/login');
 
-    const loggedIn = await AuthServices.login(req.session, code);
+    const loggedIn = await AuthServices.logIn(req.session, code);
    
     res.redirect(loggedIn ? '/' : '/login');
   }

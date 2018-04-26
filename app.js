@@ -5,8 +5,6 @@ const mustacheExpress = require('mustache-express');
 const router = require('./src/router');
 const config = require('./src/config');
 
-const visitorCounterMiddleware = require('./src/middleware/visitorCounter');
-
 const app = aa(express());
 
 /*

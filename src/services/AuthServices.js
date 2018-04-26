@@ -16,7 +16,7 @@ class AuthServices {
    * Later we can use this token to send commands to the car.
    */
   async logIn(session, code) {
-    const accessToken = await AuthServices.fetchAccessToken(code);
+    const accessToken = await this.fetchAccessToken(code);
     
     if (!!accessToken) {
       session.accessToken = accessToken;
