@@ -1,5 +1,5 @@
 # Auto Api Explorer
-This project should give you an overview of how to implement High Mobility's OAuth and [hm-node-sdk](https://www.npmjs.com/package/hmkit) library. It consists of two pages - login page to start the authentication flow and a dashboard that displays car's diagnostics state and lets you to toggle door locks.
+This project should give you an overview of how to implement [High Mobility's](https://www.high-mobility.com/) OAuth and [hm-node-sdk](https://www.npmjs.com/package/hmkit) library. It consists of two pages - login page to start the authentication flow and a dashboard that displays car's diagnostics state and lets you to toggle door locks.
 
 ## Table of contents
 * [Requirements](#requirements)
@@ -9,11 +9,10 @@ This project should give you an overview of how to implement High Mobility's OAu
 	* [Running the server](#running-the-server)
 
 ## Requirements
-* Node v8.9.0+
-* High mobility developer user account
+* [Node v8.9.0+](https://nodejs.org/en/)
+* [High mobility developer user account](https://developers.high-mobility.com)
 	* Vehicle (with *diagnostics* and *door locks* capabilities)
 	* Cloud app (with *diagnostics* and *door locks* permissions)
-
 
 ## Getting started
 
@@ -31,7 +30,7 @@ cd hm-node-auto-api-explorer
 
 Install dependencies
 ```
-npm i
+npm install
 ```
 
 ### Configuration
@@ -47,7 +46,8 @@ Firstly, you need a *cloud app* and a *vehicle* that are linked. Your vehicle ha
 Secondly, navigate to *Team Settings* > *OAuth Client* (top right corner dropdown menu). Here you can find **`OAUTH_CLIENT_ID`** *(client id)*, **`OAUTH_CLIENT_SECRET`** *(client secret)*, **`OAUTH_AUTH_URL`** *(auth url)*, **`OAUTH_TOKEN_URL`** *(token url)* settings. Copy and paste them to your `.env` file. Last thing to do on this page is to set your `REDIRECT URI`. You can find the input at the bottom of the page - set it to `http://localhost:3000/auth/oauth-callback`.
 
 ### Running the server
-Launch your vehicle's emulator in developer center and run the server.
+Launch your vehicle's emulator in [developer center](https://developers.high-mobility.com) and run the server.
 ```
 npm start
 ```
+Open `http://localhost:3000` in browser.
