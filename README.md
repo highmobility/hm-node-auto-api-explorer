@@ -39,14 +39,15 @@ Create a .env config file based on .env.example
 cp .env.example .env
 ```
 
-You can see that app port and url already have default values but you need to configure the missing ones. To do so, log in to your High Mobility's developer account.
+You need to configure all 7 missing variables. To do so, log in to your High Mobility's developer account. Firstly, you need a *cloud app* and a *vehicle* that are linked. Your vehicle has to support *diagnostics* and *door locks* capabilities and the app needs to have permissions for them.
 
-Firstly, you need a *cloud app* and a *vehicle* that are linked. Your vehicle has to support *diagnostics* and *door locks* capabilities and the app needs to have permissions for them. You can find **`HM_APP_ID`**, **`HM_CLIENT_CERTIFICATE`** and **`HM_CLIENT_PRIVATE_KEY`** settings from your cloud app detailed view *(Client certificate and private key can be found in 'client certificate' > 'node' example)*.
-
-Secondly, navigate to *Team Settings* > *OAuth Client* (top right corner dropdown menu). Here you can find **`OAUTH_CLIENT_ID`** *(client id)*, **`OAUTH_CLIENT_SECRET`** *(client secret)*, **`OAUTH_AUTH_URL`** *(auth url)*, **`OAUTH_TOKEN_URL`** *(token url)* settings. Copy and paste them to your `.env` file. Last thing to do on this page is to set your `REDIRECT URI`. You can find the input at the bottom of the page - set it to `http://localhost:3000/auth/oauth-callback`.
+* **`HM_APP_ID`** - This is displayed at your cloud app's page. If you don't have a cloud app, just create a new one and link it to your vehicle.
+* **`HM_CLIENT_CERTIFICATE`** and **`HM_CLIENT_PRIVATE_KEY`** are also displayed at your cloud app's page. You can see *Node* and *REST* snippets if you navigate to *CLIENT CERITFICATE* tab. Certificate and private key that we need are used in *Node* snippet as HMKit constructor parameters. First parameter is client certificate and the second parameter is private key.
+* **`OAUTH_CLIENT_ID`**, **`OAUTH_CLIENT_SECRET`**, **`OAUTH_AUTH_URI`** and **`OAUTH_TOKEN_URI`** can be found at *Team Settings* (top right corner dropdown menu) > *OAuth Client*. Before leaving this page, you also need to configure `REDIRECT URI`. You can find the input at the bottom of the page - set it to `http://localhost:3000/auth/oauth-callback`.
 
 ### Running the server
-Launch your vehicle's emulator in [developer center](https://developers.high-mobility.com) and run the server.
+**!! Do not forget to launch your vehicle's emulator in [developer center](https://developers.high-mobility.com) before running the server.**
+After you have launched the emulator, run the app with this command:
 ```
 npm start
 ```

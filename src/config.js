@@ -18,8 +18,8 @@ module.exports = {
   oauth: {
     clientId: process.env.OAUTH_CLIENT_ID,
     clientSecret: process.env.OAUTH_CLIENT_SECRET,
-    authUrl: process.env.OAUTH_AUTH_URL,
-    tokenUrl: process.env.OAUTH_TOKEN_URL
+    authUri: process.env.OAUTH_AUTH_URI,
+    tokenUri: process.env.OAUTH_TOKEN_URI
   },
   session: {
     secret: 'supersecrets',

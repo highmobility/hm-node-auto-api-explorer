@@ -34,10 +34,10 @@ class AuthServices {
   * Simple http post message to high-mobility's backend to fetch access token.
   */
   fetchAccessToken(code) {
-    const { oauth: { clientId, clientSecret, tokenUrl } } = config;
+    const { oauth: { clientId, clientSecret, tokenUri } } = config;
 
     return axios
-      .post(`${tokenUrl}?client_id=${clientId}&client_secret=${clientSecret}&code=${code}`)
+      .post(`${tokenUri}?client_id=${clientId}&client_secret=${clientSecret}&code=${code}`)
       .then(response => response.data.access_token)
       .catch(err => null);
   }
@@ -48,8 +48,8 @@ class AuthServices {
    * Function for building oauth url. All but permissions comes from .env file.
    */
   getOauthUrl() {
-    const { app: { url, port }, hm: { appId }, oauth: { authUrl, clientId } } = config;
-    return `${authUrl}?app_id=${appId}&client_id=${clientId}&redirect_uri=${url}:${port}/auth/oauth-callback&scope=${FULL_PERMISSIONS_TOKEN}`;
+    const { app: { url, port }, hm: { appId }, oauth: { authUri, clientId } } = config;
+    return `${authUri}?app_id=${appId}&client_id=${clientId}&redirect_uri=${url}:${port}/auth/oauth-callback&scope=${FULL_PERMISSIONS_TOKEN}`;
   }
 
 }

@@ -95,7 +95,7 @@ class HmkitServices {
         
         if (!newAccessCertificate) {
           throw new Error('Failed to download access certificate.');
-        } 
+        }
 
         session.accessCertificate = newAccessCertificate;
         return newAccessCertificate;
