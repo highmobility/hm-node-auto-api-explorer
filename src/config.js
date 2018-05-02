@@ -7,8 +7,8 @@ require('dotenv').config();
 
 module.exports = {
   app: {
-    port: process.env.PORT || 3000,
-    url: process.env.APP_URL || 'http://localhost'
+    port: 3000,
+    url: 'http://localhost'
   },
   hm: {
     appId: process.env.HM_APP_ID,
@@ -22,7 +22,7 @@ module.exports = {
     tokenUrl: process.env.OAUTH_TOKEN_URL
   },
   session: {
-    secret: process.env.SESSION_SECRET || 'supersecrets',
+    secret: 'supersecrets',
     resave: false,
     saveUninitialized: false,
     cookie: {

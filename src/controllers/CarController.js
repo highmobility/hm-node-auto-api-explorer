@@ -1,4 +1,3 @@
-const CarServices = require('../services/CarServices');
 const HmkitServices = require('../services/HmkitServices');
 
 class CarController {
@@ -9,8 +8,8 @@ class CarController {
    * We will ask for diagnostics and doors data from the vehicle and display it in our dashboard view.
    */
   async renderCarView(req, res) {
-    const diagnostics = await CarServices.getMappedDiagnosticsData(req.session);
-    const doors = await CarServices.getMappedDoorLocksData(req.session);
+    const diagnostics = await HmkitServices.getDiagnostics(req.session);
+    const doors = await HmkitServices.getDoorLocks(req.session);
     
     res.render('pages/car.ejs', { diagnostics, doors });
   }

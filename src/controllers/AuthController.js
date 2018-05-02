@@ -10,7 +10,6 @@ class AuthController {
    */
   renderLoginView(req, res) {
     if (req.session.loggedIn) return res.redirect('/');
-
     res.render('pages/login.ejs', { loginUrl: AuthServices.getOauthUrl() });
   }
 
@@ -38,7 +37,7 @@ class AuthController {
   async oauthCallback(req, res) {
     const { code, error } = req.query;
 
-    if (!!error || !code) res.redirect('/login');
+    if (!!error || !code) return res.redirect('/login');
 
     const loggedIn = await AuthServices.logIn(req.session, code);
    

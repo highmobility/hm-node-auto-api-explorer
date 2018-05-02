@@ -16,10 +16,10 @@
                     <div class="tires--list">
                         <% diagnostics.tires.forEach((tire) =>{ %>
                             <div class="tire--block">
-                                <h4><%= tire.label %></h4>
-                                <%- include('../partials/property', { label: 'Pressure', value: tire.pressure, unit: 'BAR'}); %>
-                                <%- include('../partials/property', { label: 'Temperature', value: tire.temperature, unit: '°C'}); %>
-                                <%- include('../partials/property', { label: 'RPM', value: tire.rpm, unit: 'RPM'}); %>
+                                <h4><%- include('../partials/position-label', { position: tire.tirePosition}); %></h4>
+                                <%- include('../partials/property', { label: 'Pressure', value: tire.tirePressure, unit: 'BAR'}); %>
+                                <%- include('../partials/property', { label: 'Temperature', value: tire.tireTemperature, unit: '°C'}); %>
+                                <%- include('../partials/property', { label: 'RPM', value: tire.wheelRPM, unit: 'RPM'}); %>
                             </div>
                         <% }); %>
                     </div>
@@ -57,11 +57,11 @@
                         </div>
                     </header>
                     <div class="doors--list">
-                         <% doors.forEach((door) =>{ %>
+                         <% doors.doors.forEach((door) => { %>
                             <div class="door--block">
-                                <h4><%= door.label %></h4>
-                                <%- include('../partials/property', { label: 'State', value: door.state, unit: '' }); %>
-                                <%- include('../partials/property', { label: 'Lock', value: door.lock, unit: '' }); %>
+                                <h4><%- include('../partials/position-label', { position: door.doorLocation}); %></h4>
+                                <%- include('../partials/property', { label: 'State', value: door.doorPosition, unit: '' }); %>
+                                <%- include('../partials/property', { label: 'Lock', value: door.doorLock, unit: '' }); %>
                             </div>
                         <% }); %>
                     </div>

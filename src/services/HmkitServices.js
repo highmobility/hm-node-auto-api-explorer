@@ -8,6 +8,13 @@ class HmkitServices {
     this.hmkit = new HMKit(clientCertificate, clientPrivateKey);
   }
 
+  /*
+   * getDiagnostics()
+   * 
+   * session - this is used to get or download and save access certificate
+   * 
+   * Fetches diagnostics capability data from your vehicle.
+   */
   getDiagnostics(session) {
     return this.sendCommand(
       session,
@@ -15,6 +22,13 @@ class HmkitServices {
     );
   }
 
+  /*
+   * getDoorLocks()
+   * 
+   * session - this is used to get or download and save access certificate
+   * 
+   * Fetches door locks capability data from your vehicle.
+   */
   getDoorLocks(session) {
     return this.sendCommand(
       session,
@@ -22,6 +36,13 @@ class HmkitServices {
     );
   }
 
+  /*
+   * lockDoors()
+   * 
+   * session - this is used to get or download and save access certificate
+   * 
+   * Sends a command to lock your car doors.
+   */
   lockDoors(session) {
     return this.sendCommand(
       session,
@@ -29,6 +50,13 @@ class HmkitServices {
     );
   }
 
+  /*
+   * unlockDoors()
+   * 
+   * session - this is used to get or download and save access certificate
+   * 
+   * Sends a command to unlock your car doors.
+   */
   unlockDoors(session) {
     return this.sendCommand(
       session,
@@ -36,24 +64,39 @@ class HmkitServices {
     );
   }
 
+  /*
+   * sendCommand()
+   * 
+   * session - this is used to get or download and save access certificate
+   * command - command to send to your vehicle
+   * 
+   * Sends a command to your vehicle via node SDK
+   */
   async sendCommand(session, command) {
-    try {
-      const accessCert = await this.getAccessCertificate(session);
-      const response = await this.hmkit.telematics.sendCommand(accessCert.rawAccessCertificate.accessGainingSerialNumber, command);
-      
-      return !!response ? response.parse() : null;
-    } catch (e) {
-      console.log('Failed to send command', e);
-      return null;
-    }
+    const accessCert = await this.getAccessCertificate(session);
+    const response = await this.hmkit.telematics.sendCommand(accessCert.rawAccessCertificate.accessGainingSerialNumber, command);
+    return !!response ? response.parse() : null;
   }
 
+  /*
+   * getAccessCertificate()
+   * 
+   * session - this is used to get or download and save access certificate
+   * 
+   * This function tries to take access certificate from session. 
+   * If there is none, new access certificate is downloaded and saved to session.
+   */
   async getAccessCertificate(session) {
     const { accessCertificate, accessToken } = session;
 
     if (!accessCertificate) {
       if (!!accessToken) {
         const newAccessCertificate = await this.hmkit.downloadAccessCertificate(accessToken);
+        
+        if (!newAccessCertificate) {
+          throw new Error('Failed to download access certificate.');
+        } 
+
         session.accessCertificate = newAccessCertificate;
         return newAccessCertificate;
       }

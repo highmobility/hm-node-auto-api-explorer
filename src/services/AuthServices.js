@@ -48,20 +48,10 @@ class AuthServices {
    * Function for building oauth url. All but permissions comes from .env file.
    */
   getOauthUrl() {
-    const { hm: { appId }, oauth: { authUrl, clientId } } = config;
-    return `${authUrl}?app_id=${appId}&client_id=${clientId}&redirect_uri=${this.getOauthRedirectUrl()}&scope=${FULL_PERMISSIONS_TOKEN}`;
+    const { app: { url, port }, hm: { appId }, oauth: { authUrl, clientId } } = config;
+    return `${authUrl}?app_id=${appId}&client_id=${clientId}&redirect_uri=${url}:${port}/auth/oauth-callback&scope=${FULL_PERMISSIONS_TOKEN}`;
   }
 
-  /*
-   * getOauthRedirectUrl()
-   * 
-   * Builds oauth callback url.
-   * After oauth steps, user will be redirected back to this url.
-   */
-  getOauthRedirectUrl() {
-    const { url, port } = config.app;
-    return `${url}:${port}/auth/oauth-callback`;
-  }
 }
 
 module.exports = new AuthServices();

@@ -22,8 +22,7 @@ app.set('views', `${__dirname}/src/templates`);
  */
 app.use(express.static('public'));
 app.use(session(config.session));
-
-app.use('', router);
+app.use(router);
 
 app.listen(config.app.port, () => {
   console.log(`App listening on ${config.app.url}:${config.app.port}`);
