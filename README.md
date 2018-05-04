@@ -1,5 +1,5 @@
 # Auto Api Explorer
-This project should give you an overview of how to implement [High Mobility's](https://www.high-mobility.com/) OAuth and [hm-node-sdk](https://www.npmjs.com/package/hmkit) library. It consists of two pages - login page to start the authentication flow and a dashboard that displays car's diagnostics state and lets you to toggle door locks.
+This project should give you an overview of how to implement [High Mobility's](https://www.high-mobility.com/) OAuth and the [HMKit](https://www.npmjs.com/package/hmkit) library for working with car data. It consists of two pages - login page to start the authentication flow and a dashboard that displays car's diagnostics state and lets you to toggle door locks.
 
 ## Table of contents
 * [Requirements](#requirements)
