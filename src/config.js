@@ -26,7 +26,7 @@ module.exports = {
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 60000
+      maxAge: 3600000
     }
   }
 };
