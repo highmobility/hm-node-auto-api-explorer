@@ -7,8 +7,8 @@ require('dotenv').config();
 
 module.exports = {
   app: {
-    port: 3000,
-    url: 'http://localhost'
+    port: process.env.PORT || 3000,
+    url: process.env.APP_URL || 'http://localhost'
   },
   hm: {
     appId: process.env.HM_APP_ID,
