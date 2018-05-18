@@ -43,6 +43,11 @@ h4 {
     margin-left: 20px;
 }
 
+.section--error  {
+    text-align: center;
+    margin-top: 20vh;
+}
+
 .section--login a {
     position: fixed;
     top: 50%;

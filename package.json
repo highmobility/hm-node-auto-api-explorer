@@ -12,9 +12,9 @@
     "ejs": "^2.5.9",
     "eslint": "^4.19.1",
     "express": "^4.16.3",
-    "express-async-await": "^1.1.0",
+    "express-promise-router": "^3.0.2",
     "express-session": "^1.15.6",
-    "hmkit": "^0.4.0",
+    "hmkit": "^0.5.2-beta3",
     "node-fetch": "^2.1.2"
   }
 }

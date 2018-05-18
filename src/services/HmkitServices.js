@@ -75,7 +75,7 @@ class HmkitServices {
   async sendCommand(session, command) {
     const accessCert = await this.getAccessCertificate(session);
     const response = await this.hmkit.telematics.sendCommand(accessCert.rawAccessCertificate.accessGainingSerialNumber, command);
-    return !!response ? response.parse() : null;
+    return response.parse();
   }
 
   /*
