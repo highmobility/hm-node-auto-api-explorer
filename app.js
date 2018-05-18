@@ -1,10 +1,10 @@
 const express = require('express');
 const session = require('express-session');
-const aa = require('express-async-await');
 const router = require('./src/router');
 const config = require('./src/config');
+const errorMiddleware = require('./src/middleware/errorMiddleware');
 
-const app = aa(express());
+const app = express();
 
 /*
  * EJS templating engine
@@ -23,6 +23,7 @@ app.set('views', `${__dirname}/src/templates`);
 app.use(express.static('public'));
 app.use(session(config.session));
 app.use(router);
+app.use(errorMiddleware);
 
 app.listen(config.app.port, () => {
   console.log(`App listening on ${config.app.url}:${config.app.port}`);
