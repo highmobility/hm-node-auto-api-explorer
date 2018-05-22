@@ -1,5 +1,6 @@
 const config = require('../config');
 const HMKit = require('hmkit');
+const FailureMessageResponse = require('hmkit/lib/Responses/FailureMessageResponse').default;
 
 class HmkitServices {
 
@@ -71,11 +72,18 @@ class HmkitServices {
    * command - command to send to your vehicle
    * 
    * Sends a command to your vehicle via node SDK
+   * If we receive failure message, we want to throw it to catch in our error middleware.
    */
   async sendCommand(session, command) {
     const accessCert = await this.getAccessCertificate(session);
     const response = await this.hmkit.telematics.sendCommand(accessCert.rawAccessCertificate.accessGainingSerialNumber, command);
-    return response.parse();
+    const parsedResponse = response.parse();
+
+    if (parsedResponse instanceof FailureMessageResponse) {
+      throw parsedResponse;
+    }
+   
+    return parsedResponse;
   }
 
   /*
