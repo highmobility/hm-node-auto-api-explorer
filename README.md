@@ -10,7 +10,7 @@ This project should give you an overview of how to implement [High Mobility's](h
 
 ## Requirements
 * [Node v8.9.0+](https://nodejs.org/en/)
-* [High mobility developer user account](https://developers.high-mobility.com)
+* [High mobility developer user account](https://high-mobility.com)
 	* Vehicle (with *diagnostics* and *door locks* capabilities)
 	* Cloud app (with *diagnostics* and *door locks* permissions)
 
@@ -46,7 +46,7 @@ You need to configure all 7 missing variables. To do so, log in to your High Mob
 * **`OAUTH_CLIENT_ID`**, **`OAUTH_CLIENT_SECRET`**, **`OAUTH_AUTH_URI`** and **`OAUTH_TOKEN_URI`** can be found at *Team Settings* (top right corner dropdown menu) > *OAuth Client*. Before leaving this page, you also need to configure `REDIRECT URI`. You can find the input at the bottom of the page - set it to `http://localhost:3000/auth/oauth-callback`.
 
 ### Running the server
-**!! Do not forget to launch your vehicle's emulator in [developer center](https://developers.high-mobility.com) before running the server.**
+**!! Do not forget to launch your vehicle's emulator in [developer center](https://high-mobility.com) before running the server.**
 After you have launched the emulator, run the app with this command:
 ```
 npm start
