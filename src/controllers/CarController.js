@@ -25,18 +25,15 @@ class CarController {
     });
 
     const doors = doorsData.positions.map(({ doorLocation, position }) => {
-      const currentInsideLock = doorsData.insideLocks.find(
-        insideLock => insideLock.doorLocation === doorLocation
-      );
       const currentLock = doorsData.locks.find(lock => lock.doorLocation === doorLocation);
 
       return {
         doorLocation,
         position,
-        insideLock: currentInsideLock.lockState,
         lock: currentLock.lockState
       };
     });
+
     res.render('pages/car.ejs', { diagnostics, doors, tires });
   }
 
