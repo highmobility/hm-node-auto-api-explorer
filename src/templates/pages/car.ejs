@@ -18,12 +18,12 @@
                 <section class="card section--tires">
                     <h2>Tires</h2>
                     <div class="tires--list">
-                        <% diagnostics.tires.forEach((tire) =>{ %>
+                        <% tires.forEach((tire) =>{ %>
                             <div class="tire--block">
-                                <h4><%- include('../partials/position-label', { position: tire.tirePosition}); %></h4>
-                                <%- include('../partials/property', { label: 'Pressure', value: tire.tirePressure, unit: 'BAR'}); %>
-                                <%- include('../partials/property', { label: 'Temperature', value: tire.tireTemperature, unit: '°C'}); %>
-                                <%- include('../partials/property', { label: 'RPM', value: tire.wheelRPM, unit: 'RPM'}); %>
+                                <h4><%- include('../partials/position-label', { position: tire.location}); %></h4>
+                                <%- include('../partials/property', { label: 'Pressure', value: tire.pressure, unit: 'BAR'}); %>
+                                <%- include('../partials/property', { label: 'Temperature', value: tire.temperature, unit: '°C'}); %>
+                                <%- include('../partials/property', { label: 'RPM', value: tire.wheelRpm, unit: 'RPM'}); %>
                             </div>
                         <% }); %>
                     </div>
@@ -33,17 +33,25 @@
                     <h2>Diagnostics</h2>
                     <div>
                         <%- include('../partials/property', { label: 'Mileage', value: diagnostics.mileage, unit: 'km'}); %>
-                        <%- include('../partials/property', { label: 'Engine RPM', value: diagnostics.engineRPM, unit: 'RPM'}); %>
                         <%- include('../partials/property', { label: 'Oil temperature', value: diagnostics.engineOilTemperature, unit: '°C'}); %>
+                        <%- include('../partials/property', { label: 'Engine RPM', value: diagnostics.engineRPM, unit: 'RPM'}); %>
                         <%- include('../partials/property', { label: 'Fuel level', value: diagnostics.fuelLevel, unit: '%'}); %>
                         <%- include('../partials/property', { label: 'Estimated range', value: diagnostics.estimatedRange, unit: 'km'}); %>
-                        <%- include('../partials/property', { label: 'Current fuel consumption', value: diagnostics.currentFuelConsumption, unit: 'l'}); %>
-                        <%- include('../partials/property', { label: 'Average fuel consumption', value: diagnostics.averageFuelConsumption, unit: 'l'}); %>
                         <%- include('../partials/property', { label: 'Washer fluid level', value: diagnostics.washerFluidLevel, unit: '' }); %>
                         <%- include('../partials/property', { label: 'Battery voltage', value: diagnostics.batteryVoltage, unit: 'V'}); %>
                         <%- include('../partials/property', { label: 'AdBlue level', value: diagnostics.adblueLevel, unit: 'l'}); %>
                         <%- include('../partials/property', { label: 'Distance since reset', value: diagnostics.distanceSinceReset, unit: 'km'}); %>
                         <%- include('../partials/property', { label: 'Distance since start', value: diagnostics.distanceSinceStart, unit: 'km'}); %>
+                        <%- include('../partials/property', { label: 'Fuel volume', value: diagnostics.fuelVolume, unit: 'l'}); %>
+                        <%- include('../partials/property', { label: 'Anti lock braking', value: diagnostics.antiLockBraking, unit: ''}); %>
+                        <%- include('../partials/property', { label: 'Engine coolant temperature', value: diagnostics.engineCoolantTemperature, unit: '°C'}); %>
+                        <%- include('../partials/property', { label: 'Engine total operating hours', value: diagnostics.engineTotalOperatingHours, unit: 'h'}); %>
+                        <%- include('../partials/property', { label: 'Engine total fuel consumption', value: diagnostics.engineTotalFuelConsumption, unit: 'l'}); %>
+                        <%- include('../partials/property', { label: 'Brake fluid level', value: diagnostics.brakeFluidLevel, unit: ''}); %>
+                        <%- include('../partials/property', { label: 'Engine torque', value: diagnostics.engineTorque, unit: '%'}); %>
+                        <%- include('../partials/property', { label: 'Engine load', value: diagnostics.engineLoad, unit: '%'}); %>
+                        <%- include('../partials/property', { label: 'Wheel based speed', value: diagnostics.wheelBasedSpeed, unit: 'km/h'}); %>
+                        <%- include('../partials/property', { label: 'Battery level', value: diagnostics.batteryLevel, unit: '%'}); %>
                     </div>
                 </section>
 
@@ -61,11 +69,11 @@
                         </div>
                     </header>
                     <div class="doors--list">
-                         <% doors.doors.forEach((door) => { %>
+                        <% doors.forEach((door) => { %>
                             <div class="door--block">
                                 <h4><%- include('../partials/position-label', { position: door.doorLocation}); %></h4>
-                                <%- include('../partials/property', { label: 'State', value: door.doorPosition, unit: '' }); %>
-                                <%- include('../partials/property', { label: 'Lock', value: door.doorLock, unit: '' }); %>
+                                <%- include('../partials/property', { label: 'Position', value: door.position, unit: '' }); %>
+                                <%- include('../partials/property', { label: 'Lock', value: door.lock, unit: '' }); %>
                             </div>
                         <% }); %>
                     </div>

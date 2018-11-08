@@ -1,3 +1,5 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 const express = require('express');
 const session = require('express-session');
 const router = require('./src/router');
@@ -8,7 +10,7 @@ const app = express();
 
 /*
  * EJS templating engine
- * 
+ *
  * We register templating engine and templates path.
  */
 app.set('view engine', 'ejs');
@@ -16,7 +18,7 @@ app.set('views', `${__dirname}/src/templates`);
 
 /*
  * Middleware
- * 
+ *
  * We use public folder to serve static files - styles.css in this case.
  * express-session to handle sessions.
  */
