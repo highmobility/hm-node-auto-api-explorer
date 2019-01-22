@@ -41,8 +41,8 @@ cp .env.example .env
 
 You need to configure all 7 missing variables. To do so, log in to your High Mobility's developer account. Firstly, you need a *cloud app* and a *vehicle* that are linked. Your vehicle has to support *diagnostics* and *door locks* capabilities and the app needs to have permissions for them.
 
-* **`HM_APP_ID`** - This is displayed at your cloud app's page. If you don't have a cloud app, just create a new one and link it to your vehicle.
-* **`HM_CLIENT_CERTIFICATE`** and **`HM_CLIENT_PRIVATE_KEY`** are also displayed at your cloud app's page. You can see *Node* and *REST* snippets if you navigate to *CLIENT CERITFICATE* tab. Certificate and private key that we need are used in *Node* snippet as HMKit constructor parameters. First parameter is client certificate and the second parameter is private key.
+* **`HM_APP_ID`** - This is displayed at your cloud app's page labelled "Serial #". If you don not have a cloud app, create a new one and link it to your vehicle.
+* **`HM_CLIENT_CERTIFICATE`** and **`HM_CLIENT_PRIVATE_KEY`** are also displayed at your cloud app's page. You can see *Node* and *REST* snippets if you navigate to *CLIENT CERITFICATE* tab. The certificate and private key that we need are used in *Node* snippet as HMKit constructor parameters. The first parameter is the client certificate and the second parameter is the private key.
 * **`OAUTH_CLIENT_ID`**, **`OAUTH_CLIENT_SECRET`**, **`OAUTH_AUTH_URI`** and **`OAUTH_TOKEN_URI`** can be found at *Team Settings* (top right corner dropdown menu) > *OAuth Client*. Before leaving this page, you also need to configure `REDIRECT URI`. You can find the input at the bottom of the page - set it to `http://localhost:3000/auth/oauth-callback`.
 
 ### Running the server
