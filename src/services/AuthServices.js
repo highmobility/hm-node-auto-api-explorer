@@ -39,9 +39,14 @@ class AuthServices {
     } = config;
 
     return axios
-      .post(`${tokenUri}`, {client_id: clientId, client_secret: clientSecret, code: code, redirect_uri: `${url}:${port}/auth/oauth-callback`})
+      .post(`${tokenUri}`, {
+        client_id: clientId,
+        client_secret: clientSecret,
+        redirect_uri: `${url}:${port}/auth/oauth-callback`,
+        code
+      })
       .then(response => response.data.access_token)
-      .catch(err => null);
+      .catch(err => err);
   }
 
   /*
