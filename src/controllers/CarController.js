@@ -10,27 +10,29 @@ class CarController {
     const diagnostics = await HmkitServices.getDiagnostics(req.session);
     const doorsData = await HmkitServices.getDoorLocks(req.session);
 
-    const tires = diagnostics.tirePressures.map(({ location, pressure }) => {
+    const tires = diagnostics.tirePressures.map(({ value: { location, pressure } }) => {
       const tireTemperatureData = diagnostics.tireTemperatures.find(
-        tempData => tempData.location === location
+        tempData => tempData.value.location === location
       );
-      const wheelRpmData = diagnostics.wheelRpms.find(rpmData => rpmData.location === location);
+      const wheelRpmData = diagnostics.wheelRpms.find(
+        rpmData => rpmData.value.location === location
+      );
 
       return {
         location,
         pressure,
-        temperature: tireTemperatureData.temperature,
-        wheelRpm: wheelRpmData.rpm
+        temperature: tireTemperatureData.value.temperature,
+        wheelRpm: wheelRpmData.value.rpm
       };
     });
 
-    const doors = doorsData.positions.map(({ doorLocation, position }) => {
-      const currentLock = doorsData.locks.find(lock => lock.doorLocation === doorLocation);
+    const doors = doorsData.positions.map(({ value: { doorLocation, position } }) => {
+      const currentLock = doorsData.locks.find(lock => lock.value.doorLocation === doorLocation);
 
       return {
         doorLocation,
         position,
-        lock: currentLock.lockState
+        lock: currentLock.value.lockState
       };
     });
 
