@@ -1,6 +1,6 @@
-<%if (value !== null && value !== undefined) { %>
+<%if (prop) { %>
     <div class="property">
         <span><%= label %></span>
-        <span><%= value %> <%= unit %></span>
+        <span><%= prop.value %> <%= unit %></span>
     </div>
 <% } %>
