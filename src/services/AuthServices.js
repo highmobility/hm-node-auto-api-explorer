@@ -56,11 +56,12 @@ class AuthServices {
    */
   getOauthUrl() {
     const {
-      app: { url, port },
+      app: { redirectUri },
       hm: { appId },
       oauth: { authUri, clientId }
     } = config;
-    return `${authUri}?app_id=${appId}&client_id=${clientId}&redirect_uri=${url}:${port}/auth/oauth-callback&scope=${FULL_PERMISSIONS_TOKEN}`;
+
+    return `${authUri}?app_id=${appId}&client_id=${clientId}&redirect_uri=${redirectUri}/auth/oauth-callback&scope=${FULL_PERMISSIONS_TOKEN}`;
   }
 }
 
