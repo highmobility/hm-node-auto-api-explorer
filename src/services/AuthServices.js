@@ -34,7 +34,7 @@ class AuthServices {
    */
   fetchAccessToken(code) {
     const {
-      app: { url, port },
+      app: { url, port, redirectUri },
       oauth: { clientId, clientSecret, tokenUri }
     } = config;
 
@@ -42,7 +42,7 @@ class AuthServices {
       .post(`${tokenUri}`, {
         client_id: clientId,
         client_secret: clientSecret,
-        redirect_uri: `${url}:${port}/auth/oauth-callback`,
+        redirect_uri: `${redirectUri}/auth/oauth-callback`,
         code
       })
       .then(response => response.data.access_token)
