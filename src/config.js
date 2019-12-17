@@ -28,8 +28,6 @@ module.exports = {
     secret: 'supersecrets',
     resave: false,
     saveUninitialized: false,
-    cookie: {
-      maxAge: 3600000
-    }
+    cookie: { maxAge: 600000, httpOnly: false }
   }
 };
