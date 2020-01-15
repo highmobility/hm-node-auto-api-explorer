@@ -16,7 +16,7 @@ class HmkitServices {
    * Fetches diagnostics capability data from your vehicle.
    */
   getDiagnostics(session) {
-    return this.sendCommand(session, this.hmkit.commands.DiagnosticsCommand.getState());
+    return this.sendCommand(session, this.hmkit.commands.Diagnostics.getState());
   }
 
   /*
@@ -27,7 +27,7 @@ class HmkitServices {
    * Fetches door locks capability data from your vehicle.
    */
   getDoorLocks(session) {
-    return this.sendCommand(session, this.hmkit.commands.DoorLocksCommand.getState());
+    return this.sendCommand(session, this.hmkit.commands.Doors.getState());
   }
 
   /*
@@ -38,7 +38,12 @@ class HmkitServices {
    * Sends a command to lock your car doors.
    */
   lockDoors(session) {
-    return this.sendCommand(session, this.hmkit.commands.DoorLocksCommand.lock());
+    return this.sendCommand(
+      session,
+      this.hmkit.commands.Doors.lockUnlockDoors({
+        locksState: 'locked'
+      })
+    );
   }
 
   /*
@@ -49,7 +54,12 @@ class HmkitServices {
    * Sends a command to unlock your car doors.
    */
   unlockDoors(session) {
-    return this.sendCommand(session, this.hmkit.commands.DoorLocksCommand.unlock());
+    return this.sendCommand(
+      session,
+      this.hmkit.commands.Doors.lockUnlockDoors({
+        locksState: 'unlocked'
+      })
+    );
   }
 
   /*

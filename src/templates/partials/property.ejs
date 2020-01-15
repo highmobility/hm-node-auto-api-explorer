@@ -1,6 +1,6 @@
 <%if (prop) { %>
-    <div class="property">
-        <span><%= label %></span>
-        <span><%= prop.value %> <%= unit %></span>
-    </div>
+<div class="property">
+  <span><%= label %></span>
+  <span><%= unit === "%" ? Math.floor(prop.value * 100) : prop.value %> <%= unit %></span>
+</div>
 <% } %>

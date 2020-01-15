@@ -8,7 +8,10 @@ require('dotenv').config();
 module.exports = {
   app: {
     port: process.env.PORT || 3000,
-    url: process.env.APP_URL || 'http://localhost'
+    url: process.env.APP_URL || 'http://localhost',
+    redirectUri:
+      process.env.REDIRECT_URI ||
+      `${process.env.APP_URL || 'http://localhost'}:${process.env.PORT || 3000}`
   },
   hm: {
     appId: process.env.HM_APP_ID,
@@ -25,8 +28,6 @@ module.exports = {
     secret: 'supersecrets',
     resave: false,
     saveUninitialized: false,
-    cookie: {
-      maxAge: 3600000
-    }
+    cookie: { maxAge: 600000, httpOnly: false }
   }
 };

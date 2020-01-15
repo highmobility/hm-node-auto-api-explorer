@@ -39,7 +39,7 @@
                         <%- include('../partials/property', { label: 'Estimated range', prop: diagnostics.estimatedRange, unit: 'km'}); %>
                         <%- include('../partials/property', { label: 'Washer fluid level', prop: diagnostics.washerFluidLevel, unit: '' }); %>
                         <%- include('../partials/property', { label: 'Battery voltage', prop: diagnostics.batteryVoltage, unit: 'V'}); %>
-                        <%- include('../partials/property', { label: 'AdBlue level', prop: diagnostics.adblueLevel, unit: 'l'}); %>
+                        <%- include('../partials/property', { label: 'AdBlue level', prop: diagnostics.adBlueLevel, unit: 'l'}); %>
                         <%- include('../partials/property', { label: 'Distance since reset', prop: diagnostics.distanceSinceReset, unit: 'km'}); %>
                         <%- include('../partials/property', { label: 'Distance since start', prop: diagnostics.distanceSinceStart, unit: 'km'}); %>
                         <%- include('../partials/property', { label: 'Fuel volume', prop: diagnostics.fuelVolume, unit: 'l'}); %>
@@ -71,7 +71,7 @@
                     <div class="doors--list">
                         <% doors.forEach((door) => { %>
                             <div class="door--block">
-                                <h4><%- include('../partials/position-label', { position: door.doorLocation}); %></h4>
+                                <h4><%- include('../partials/position-label', { position: door.location}); %></h4>
                                 <%- include('../partials/value', { label: 'Position', value: door.position, unit: '' }); %>
                                 <%- include('../partials/value', { label: 'Lock', value: door.lock, unit: '' }); %>
                             </div>
