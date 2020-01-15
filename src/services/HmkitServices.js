@@ -41,7 +41,7 @@ class HmkitServices {
     return this.sendCommand(
       session,
       this.hmkit.commands.Doors.lockUnlockDoors({
-        insideLocksState: 'locked'
+        locksState: 'locked'
       })
     );
   }
@@ -57,7 +57,7 @@ class HmkitServices {
     return this.sendCommand(
       session,
       this.hmkit.commands.Doors.lockUnlockDoors({
-        insideLocksState: 'unlocked'
+        locksState: 'unlocked'
       })
     );
   }
