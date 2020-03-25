@@ -1,6 +1,5 @@
 const config = require('../config');
 const HMKit = require('hmkit');
-const FailureMessageResponse = require('hmkit/lib/Responses/FailureMessageResponse').default;
 
 class HmkitServices {
   constructor() {
@@ -16,7 +15,7 @@ class HmkitServices {
    * Fetches diagnostics capability data from your vehicle.
    */
   getDiagnostics(session) {
-    return this.sendCommand(session, this.hmkit.commands.Diagnostics.getState());
+    return this.sendCommand(session, this.hmkit.commands.Race.getState());
   }
 
   /*
@@ -74,12 +73,12 @@ class HmkitServices {
   async sendCommand(session, command) {
     const accessCert = await this.getAccessCertificate(session);
     const response = await this.hmkit.telematics.sendCommand(
-      accessCert.rawAccessCertificate.accessGainingSerialNumber,
-      command
+      command,
+      accessCert
     );
     const parsedResponse = response.parse();
-
-    if (parsedResponse instanceof FailureMessageResponse) {
+    
+    if (parsedResponse.constructor.name === 'FailureMessageResponse') {
       throw parsedResponse;
     }
 
@@ -97,7 +96,7 @@ class HmkitServices {
   async getAccessCertificate(session) {
     const { accessCertificate, accessToken } = session;
 
-    if (!accessCertificate) {
+    if (!accessCertificate || typeof accessCertificate.getVehicleSerial !== 'function') {
       if (!!accessToken) {
         const newAccessCertificate = await this.hmkit.downloadAccessCertificate(accessToken);
 

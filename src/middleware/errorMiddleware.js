@@ -1,5 +1,3 @@
-const FailureMessageResponse = require('hmkit/lib/Responses/FailureMessageResponse').default;
-
 module.exports = (err, req, res, next) => {
   /**
    * HTTP errors
@@ -15,9 +13,9 @@ module.exports = (err, req, res, next) => {
 
   /**
    * Node SDK errors
-   */
-  if (err && err instanceof FailureMessageResponse && err.reason) {
-    switch (err.reason.key) {
+   */  
+  if (err && err.constructor.name === 'FailureMessageResponse' && err.failedMessageType) {
+    switch (err.failedMessageType.value) {
       case 0:
         return buildErrorResponse(res, 'Vehicle has not the capability to perform the command');
       case 1:
