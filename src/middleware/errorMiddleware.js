@@ -33,9 +33,10 @@ module.exports = (err, req, res, next) => {
     }
   }
 
-  return buildErrorResponse(res, 'Unknown error, check your logs');
+  return buildErrorResponse(res, 'Unknown error, check your logs', err);
 };
 
-function buildErrorResponse(res, message) {
+function buildErrorResponse(res, message, err = null) {
+  if (err) console.error(err);
   return res.render('pages/error.ejs', { err: { message } });
 }
