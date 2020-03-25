@@ -14,7 +14,7 @@
     "express": "^4.16.3",
     "express-promise-router": "^3.0.2",
     "express-session": "^1.15.6",
-    "hmkit": "^11.0.1",
+    "hmkit": "^11.1.3",
     "node-fetch": "^2.1.2"
   }
 }
