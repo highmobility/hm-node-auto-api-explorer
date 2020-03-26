@@ -15,7 +15,7 @@ class HmkitServices {
    * Fetches diagnostics capability data from your vehicle.
    */
   getDiagnostics(session) {
-    return this.sendCommand(session, this.hmkit.commands.Race.getState());
+    return this.sendCommand(session, this.hmkit.commands.Diagnostics.getState());
   }
 
   /*
