@@ -52,6 +52,10 @@
                         <%- include('../partials/property', { label: 'Engine load', prop: diagnostics.engineLoad, unit: '%'}); %>
                         <%- include('../partials/property', { label: 'Wheel based speed', prop: diagnostics.wheelBasedSpeed, unit: 'km/h'}); %>
                         <%- include('../partials/property', { label: 'Battery level', prop: diagnostics.batteryLevel, unit: '%'}); %>
+                        <%- include('../partials/property', { label: 'Vehicle Heading', prop: vehicleLocation.heading, unit: 'degrees'}); %>
+                        <%- include('../partials/value', { label: 'Latitude', value: vehicleLocation.coordinates.value.latitude, unit: 'degrees'}); %>
+                        <%- include('../partials/value', { label: 'Longitude', value: vehicleLocation.coordinates.value.longitude, unit: 'degrees'}); %>
+                        
                     </div>
                 </section>
 

@@ -19,6 +19,17 @@ class HmkitServices {
   }
 
   /*
+   * getLocation()
+   *
+   * session - this is used to get or download and save access certificate
+   *
+   * Fetches location  data from your vehicle.
+   */
+  getVehicleLocation(session) {
+    return this.sendCommand(session, this.hmkit.commands.VehicleLocation.getVehicleLocation());
+  }
+
+  /*
    * getDoorLocks()
    *
    * session - this is used to get or download and save access certificate

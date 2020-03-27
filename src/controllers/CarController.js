@@ -9,7 +9,8 @@ class CarController {
   async renderCarView(req, res) {
     const diagnostics = await HmkitServices.getDiagnostics(req.session);
     const doorsData = await HmkitServices.getDoorLocks(req.session);
-    
+    const vehicleLocation = await HmkitServices.getVehicleLocation(req.session);
+
     const tires = diagnostics.tirePressures.map(({ value: { location, pressure } }) => {
       const tireTemperatureData = diagnostics.tireTemperatures.find(
         tempData => tempData.value.location === location
@@ -39,7 +40,7 @@ class CarController {
       };
     });
 
-    res.render('pages/car.ejs', { diagnostics, doors, tires });
+    res.render('pages/car.ejs', { diagnostics, doors, tires, vehicleLocation });
   }
 
   /*
