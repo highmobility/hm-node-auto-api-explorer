@@ -94,6 +94,14 @@ h4 {
   grid-row-start: 2;
 }
 
+.section--position {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+
+}
+
 .section--diagnostics {
   grid-column-start: 4;
   grid-column-end: 6;
