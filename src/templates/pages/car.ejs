@@ -55,7 +55,8 @@
                         <%- include('../partials/property', { label: 'Vehicle Heading', prop: vehicleLocation.heading, unit: 'degrees'}); %>
                         <%- include('../partials/value', { label: 'Latitude', value: vehicleLocation.coordinates.value.latitude, unit: 'degrees'}); %>
                         <%- include('../partials/value', { label: 'Longitude', value: vehicleLocation.coordinates.value.longitude, unit: 'degrees'}); %>
-                        
+                        <%- include('../partials/value', { value: vehicleLocation.coordinates.value.latitude}); %>
+                        <%- include('../partials/value', { value: vehicleLocation.coordinates.value.longitude}); %>
                     </div>
                 </section>
 
