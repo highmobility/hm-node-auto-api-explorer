@@ -43,6 +43,7 @@ class AuthServices {
         client_id: clientId,
         client_secret: clientSecret,
         redirect_uri: redirectUri,
+        grant_type: 'authorization_code',
         code
       })
       .then(response => response.data.access_token)
