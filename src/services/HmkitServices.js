@@ -79,6 +79,7 @@ class HmkitServices {
     const parsedResponse = response.parse();
     
     if (parsedResponse.constructor.name === 'FailureMessageResponse') {
+      console.log('Failed to execute the command (', command ,'): ', parsedResponse)
       throw parsedResponse;
     }
 
