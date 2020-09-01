@@ -20,6 +20,19 @@
                     <div><img src="https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=560x450&markers=<%- include('../partials/value', { value: vehicleLocation.coordinates.value.latitude}); %>,<%- include('../partials/value', { value: vehicleLocation.coordinates.value.longitude}); %>&key=AIzaSyCx6sA8X97IIUluvY66bqPET4xqKf0nT7M">
                     </div>
                 </section>
+                <section class="card section--tires">
+                    <h2>Tires</h2>
+                    <div class="tires--list">
+                        <% tires.forEach((tire) =>{ %>
+                            <div class="tire--block">
+                                <h4><%- include('../partials/position-label', { position: tire.location}); %></h4>
+                                <%- include('../partials/value', { label: 'Pressure', value: tire.pressure, unit: 'BAR'}); %>
+                                <%- include('../partials/value', { label: 'Temperature', value: tire.temperature, unit: '°C'}); %>
+                                <%- include('../partials/value', { label: 'RPM', value: tire.wheelRpm, unit: 'RPM'}); %>
+                            </div>
+                        <% }); %>
+                    </div>
+                </section>
 
                 <section class="card section--diagnostics">
                     <h2>Diagnostics</h2>
@@ -29,9 +42,32 @@
                         <%- include('../partials/property', { label: 'Vehicle Heading', prop: vehicleLocation.heading, unit: 'degrees'}); %>
                         <%- include('../partials/value', { label: 'Latitude', value: vehicleLocation.coordinates.value.latitude, unit: 'degrees'}); %>
                         <%- include('../partials/value', { label: 'Longitude', value: vehicleLocation.coordinates.value.longitude, unit: 'degrees'}); %>
+                        <%- include('../partials/property', { label: 'Fuel Volume', prop: diagnostics.fuelVolume, unit: 'liters'}); %>
+                        <%- include('../partials/property', { label: 'Engine Coolant Temp', prop: diagnostics.engineCoolantTemperature, unit: 'C'}); %>
+                        
+                        <!-- Control messages and trouble codes -->
                     </div>
                 </section>
+                <section class="card">
+                    <h2>Maintenance</h2>
+                    <div>
+                        <%- include('../partials/property', { label: 'Days to Next Service', prop: maintenance.daysToNextService, unit: 'days'}); %>
+                        <%- include('../partials/property', { label: 'Kilometers to Next Service', prop: maintenance.kilometersToNextService, unit: 'km'}); %>
+                        <%- include('../partials/property', { label: 'CBS Reports Count', prop: maintenance.cbsReportsCount, unit: ''}); %>
+                        <%- include('../partials/property', { label: 'Months to Exhaust Inspection', prop: maintenance.monthsToExhaustInspection, unit: 'months'}); %>
+                        <%- include('../partials/property', { label: 'Teleservice Availability', prop: maintenance.teleserviceAvailability, unit: ''}); %>
+                        <%- include('../partials/property', { label: 'Service Time Threshold', prop: maintenance.serviceTimeThreshold, unit: 'months'}); %>
+                        <%- include('../partials/property', { label: 'Next Inspection Date', prop: maintenance.nextInspectionDate, unit: ''}); %>
+                        <%- include('../partials/property', { label: 'Brake Fluid Change Date', prop: maintenance.brakeFluidChangeDate, unit: ''}); %>
 
+                    </div>
+                </section>
+                <section class="card">
+                    <h2>Ignition</h2>
+                    <div>
+                        <%- include('../partials/property', { label: 'Ignition', prop: ignition.status, unit: ''}); %>
+                    </div>
+                </section>
                 
             </div>
         </div>

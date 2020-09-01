@@ -18,6 +18,28 @@ class HmkitServices {
     return this.sendCommand(session, this.hmkit.commands.Diagnostics.getState());
   }
 
+   /*
+   * getMaintenance()
+   *
+   * session - this is used to get or download and save access certificate
+   *
+   * Fetches maintenance capability data from your vehicle.
+   */
+  getMaintenance(session) {
+    return this.sendCommand(session, this.hmkit.commands.Maintenance.getState());
+  }
+
+     /*
+   * getIgnition()
+   *
+   * session - this is used to get or download and save access certificate
+   *
+   * Fetches ignition status data from your vehicle.
+   */
+  getIgnition(session) {
+    return this.sendCommand(session, this.hmkit.commands.Ignition.getState());
+  }
+
   /*
    * getLocation()
    *

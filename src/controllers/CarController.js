@@ -8,6 +8,8 @@ class CarController {
    */
   async renderCarView(req, res) {
     const diagnostics = await HmkitServices.getDiagnostics(req.session);
+    const maintenance = await HmkitServices.getMaintenance(req.session);
+    const ignition = await HmkitServices.getIgnition(req.session);
     const doorsData = await HmkitServices.getDoorLocks(req.session);
     const vehicleLocation = await HmkitServices.getVehicleLocation(req.session);
 
@@ -40,7 +42,7 @@ class CarController {
       };
     });
 
-    res.render('pages/car.ejs', { diagnostics, doors, tires, vehicleLocation });
+    res.render('pages/car.ejs', { diagnostics, maintenance, ignition, doors, tires, vehicleLocation });
   }
 
   /*
