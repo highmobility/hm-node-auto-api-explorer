@@ -1,0 +1,11 @@
+# use this vin when it's asked
+#VIN=CVI00000-S-E629AB
+VIN=CVI00000S-009C26
+HM_APP_ID=7D79DD240181FBC12A563DAC
+HM_CLIENT_CERTIFICATE=dGVzdH153SQBgfvBKlY9rKVEw25JI+tGor6iwwxcnhvxLbn2oHT1cShaqq17u/WI4svqNBuo7A00+NIyld3hrGLzfYn5sO8VpC3N9RYXmAVKqtsUEhV7yi4gqyyRHae3dsyvbmZwwSsYPMzOmBfydpO9j2Ii6qY+cWoFvEuoSQWsFOTxOBvQAQk2MReESMGpNGDqTLLl68X9
+HM_CLIENT_PRIVATE_KEY=yJvTRXMHwDJmum8fNWBbCFrD/k5WItXZhM+kJYeL9nI=
+OAUTH_CLIENT_ID=c41ede1c-4d86-4716-854f-03fdc3f235fc
+OAUTH_CLIENT_SECRET=JJ2lIS0KEUi2d5acEvsekPhCo80jv1oK
+OAUTH_AUTH_URI=https://sandbox.owner-panel.high-mobility.com/hm_cloud/o/edecc04e-8921-42bc-ac0b-52414ac83f8c/oauth
+OAUTH_TOKEN_URI=https://sandbox.api.high-mobility.com/v1/edecc04e-8921-42bc-ac0b-52414ac83f8c/oauth/access_tokens
+REDIRECT_URI=http://localhost:3000/auth/oauth-callback
