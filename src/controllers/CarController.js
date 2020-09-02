@@ -8,27 +8,36 @@ class CarController {
    */
   async renderCarView(req, res) {
     const diagnostics = await HmkitServices.getDiagnostics(req.session);
-    const maintenance = await HmkitServices.getMaintenance(req.session);
+    // const maintenance = await HmkitServices.getMaintenance(req.session);
     const ignition = await HmkitServices.getIgnition(req.session);
     const doorsData = await HmkitServices.getDoorLocks(req.session);
     const vehicleLocation = await HmkitServices.getVehicleLocation(req.session);
 
-    const tires = diagnostics.tirePressures.map(({ value: { location, pressure } }) => {
-      const tireTemperatureData = diagnostics.tireTemperatures.find(
-        tempData => tempData.value.location === location
-      );
+    const controlMessages = diagnostics.checkControlMessages;
+    console.log("control message = ");
+    console.log(controlMessages);
 
-      const wheelRpmData = diagnostics.wheelRPMs.find(
-        rpmData => rpmData.value.location === location
-      );
+    // const CBS = maintenance.conditionBasedServices;
+    // console.log("Condition Based Services = ");
+    // console.log(CBS);
+    
 
-      return {
-        location,
-        pressure,
-        temperature: tireTemperatureData.value.temperature,
-        wheelRpm: wheelRpmData.value.RPM
-      };
-    });
+    // const tires = diagnostics.tirePressures.map(({ value: { location, pressure } }) => {
+    //   const tireTemperatureData = diagnostics.tireTemperatures.find(
+    //     tempData => tempData.value.location === location
+    //   );
+
+    //   const wheelRpmData = diagnostics.wheelRPMs.find(
+    //     rpmData => rpmData.value.location === location
+    //   );
+
+    //   return {
+    //     location,
+    //     pressure,
+    //     temperature: tireTemperatureData.value.temperature,
+    //     wheelRpm: wheelRpmData.value.RPM
+    //   };
+    // });
     
     const doors = doorsData.positions.filter(pos => {
       return !(pos && pos.value.location === 'all')
@@ -42,8 +51,9 @@ class CarController {
       };
     });
 
-    res.render('pages/car.ejs', { diagnostics, maintenance, ignition, doors, tires, vehicleLocation });
+    res.render('pages/car.ejs', { diagnostics, maintenance, ignition, doors, vehicleLocation, controlMessages});
   }
+  // remove maintenance and cbs tires
 
   /*
    * lockDoors()

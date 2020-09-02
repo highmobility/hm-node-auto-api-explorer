@@ -19,36 +19,32 @@
                     <h2>Position</h2>
                     <div><img src="https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=560x450&markers=<%- include('../partials/value', { value: vehicleLocation.coordinates.value.latitude}); %>,<%- include('../partials/value', { value: vehicleLocation.coordinates.value.longitude}); %>&key=AIzaSyCx6sA8X97IIUluvY66bqPET4xqKf0nT7M">
                     </div>
+                    <%- include('../partials/property', { label: 'Vehicle Heading', prop: vehicleLocation.heading, unit: 'deg'}); %>
+                        <%- include('../partials/value', { label: 'Latitude', value: vehicleLocation.coordinates.value.latitude, unit: 'deg'}); %>
+                        <%- include('../partials/value', { label: 'Longitude', value: vehicleLocation.coordinates.value.longitude, unit: 'deg'}); %>
                 </section>
-                <section class="card section--tires">
-                    <h2>Tires</h2>
-                    <div class="tires--list">
-                        <% tires.forEach((tire) =>{ %>
-                            <div class="tire--block">
-                                <h4><%- include('../partials/position-label', { position: tire.location}); %></h4>
-                                <%- include('../partials/value', { label: 'Pressure', value: tire.pressure, unit: 'BAR'}); %>
-                                <%- include('../partials/value', { label: 'Temperature', value: tire.temperature, unit: '°C'}); %>
-                                <%- include('../partials/value', { label: 'RPM', value: tire.wheelRpm, unit: 'RPM'}); %>
-                            </div>
-                        <% }); %>
-                    </div>
-                </section>
-
                 <section class="card section--diagnostics">
                     <h2>Diagnostics</h2>
                     <div>
                         <%- include('../partials/property', { label: 'Mileage', prop: diagnostics.mileage, unit: 'km'}); %>
                         <%- include('../partials/property', { label: 'Speed', prop: diagnostics.wheelBasedSpeed, unit: 'km/h'}); %>
-                        <%- include('../partials/property', { label: 'Vehicle Heading', prop: vehicleLocation.heading, unit: 'degrees'}); %>
-                        <%- include('../partials/value', { label: 'Latitude', value: vehicleLocation.coordinates.value.latitude, unit: 'degrees'}); %>
-                        <%- include('../partials/value', { label: 'Longitude', value: vehicleLocation.coordinates.value.longitude, unit: 'degrees'}); %>
+                        
                         <%- include('../partials/property', { label: 'Fuel Volume', prop: diagnostics.fuelVolume, unit: 'liters'}); %>
                         <%- include('../partials/property', { label: 'Engine Coolant Temp', prop: diagnostics.engineCoolantTemperature, unit: 'C'}); %>
-                        
+                        <%- include('../partials/property', { label: 'Ad Blue Level', prop: diagnostics.adBlueLevel, unit: 'liters'}); %>
                         <!-- Control messages and trouble codes -->
                     </div>
                 </section>
-                <section class="card">
+
+                               
+                <section class="card section--ignition" style="display:none;">
+                    <h2>Ignition</h2>
+                    <div>
+                        <%- include('../partials/property', { label: 'Ignition', prop: ignition.status, unit: ''}); %>
+                    </div>
+                </section>
+                
+                <!-- <section class="card section--maintenance">
                     <h2>Maintenance</h2>
                     <div>
                         <%- include('../partials/property', { label: 'Days to Next Service', prop: maintenance.daysToNextService, unit: 'days'}); %>
@@ -61,13 +57,42 @@
                         <%- include('../partials/property', { label: 'Brake Fluid Change Date', prop: maintenance.brakeFluidChangeDate, unit: ''}); %>
 
                     </div>
-                </section>
-                <section class="card">
-                    <h2>Ignition</h2>
-                    <div>
-                        <%- include('../partials/property', { label: 'Ignition', prop: ignition.status, unit: ''}); %>
+                </section> -->
+                <section class="card section--control-messages" style="display:none;">
+                    <h2>Control Messages</h2>
+                    <div class="">
+                        <% 
+                        diagnostics.checkControlMessages.forEach((controlMessage) =>{ %>
+                            <div class="tire--block">
+                                <!-- <%- include('../partials/property', { label: 'Mileage', prop: controlMessage.value.ID, unit: 'km'}); %> -->
+                                <p>ID: <%- controlMessage.value.ID %></p>
+                                <p>text: <%- controlMessage.value.text %></p>
+                                <p>status: <%- controlMessage.value.status %></p>
+                                <p>remainingMinutes: <%- controlMessage.value.remainingMinutes %></p>
+                                <!-- <p>timestamp: <%- controlMessage.value.timestamp %></p> -->
+                            </div>
+                        <% }); %>
                     </div>
                 </section>
+
+                <section class="card" style="display:none;">
+                    <h2>Condition Based Services</h2>
+                    <div class="section--cbs">
+                        <% 
+                        diagnostics.checkControlMessages.forEach((controlMessage) =>{ %>
+                            <div class="tire--block">
+                                <!-- <%- include('../partials/property', { label: 'Mileage', prop: controlMessage.value.ID, unit: 'km'}); %> -->
+                                <p>ID: <%- controlMessage.value.ID %></p>
+                                <p>text: <%- controlMessage.value.text %></p>
+                                <p>status: <%- controlMessage.value.status %></p>
+                                <p>remainingMinutes: <%- controlMessage.value.remainingMinutes %></p>
+                                <!-- <p>timestamp: <%- controlMessage.value.timestamp %></p> -->
+                            </div>
+                        <% }); %>
+                    </div>
+                </section>
+
+
                 
             </div>
         </div>
