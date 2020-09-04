@@ -8,18 +8,18 @@ class CarController {
    */
   async renderCarView(req, res) {
     const diagnostics = await HmkitServices.getDiagnostics(req.session);
-    // const maintenance = await HmkitServices.getMaintenance(req.session);
+    const maintenance = await HmkitServices.getMaintenance(req.session);
     const ignition = await HmkitServices.getIgnition(req.session);
-    const doorsData = await HmkitServices.getDoorLocks(req.session);
+    // const doorsData = await HmkitServices.getDoorLocks(req.session);
     const vehicleLocation = await HmkitServices.getVehicleLocation(req.session);
 
     const controlMessages = diagnostics.checkControlMessages;
     console.log("control message = ");
     console.log(controlMessages);
 
-    // const CBS = maintenance.conditionBasedServices;
-    // console.log("Condition Based Services = ");
-    // console.log(CBS);
+    const CBS = maintenance.conditionBasedServices;
+    console.log("Condition Based Services = ");
+    console.log(CBS);
     
 
     // const tires = diagnostics.tirePressures.map(({ value: { location, pressure } }) => {
@@ -39,21 +39,21 @@ class CarController {
     //   };
     // });
     
-    const doors = doorsData.positions.filter(pos => {
-      return !(pos && pos.value.location === 'all')
-    }).map(({ value: { location, position } }) => {
-      const currentLock = doorsData.locks.find(lock => lock.value.location === location);
+    // const doors = doorsData.positions.filter(pos => {
+    //   return !(pos && pos.value.location === 'all')
+    // }).map(({ value: { location, position } }) => {
+    //   const currentLock = doorsData.locks.find(lock => lock.value.location === location);
 
-      return {
-        location,
-        position,
-        lock: currentLock ? currentLock.value.lockState : null
-      };
-    });
+    //   return {
+    //     location,
+    //     position,
+    //     lock: currentLock ? currentLock.value.lockState : null
+    //   };
+    // });
 
-    res.render('pages/car.ejs', { diagnostics, maintenance, ignition, doors, vehicleLocation, controlMessages});
+    res.render('pages/car.ejs', { diagnostics, ignition, vehicleLocation, controlMessages, maintenance});
   }
-  // remove maintenance and cbs tires
+  // remove maintenance and cbs tires doors
 
   /*
    * lockDoors()

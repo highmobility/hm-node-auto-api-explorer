@@ -17,7 +17,7 @@
             <div class="car-grid">
                 <section class="card section--position">
                     <h2>Position</h2>
-                    <div><img src="https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=560x450&markers=<%- include('../partials/value', { value: vehicleLocation.coordinates.value.latitude}); %>,<%- include('../partials/value', { value: vehicleLocation.coordinates.value.longitude}); %>&key=AIzaSyCx6sA8X97IIUluvY66bqPET4xqKf0nT7M">
+                    <div><img src="https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=560x450&markers=<%- include('../partials/value', { value: vehicleLocation.coordinates.value.latitude}); %>,<%- include('../partials/value', { value: vehicleLocation.coordinates.value.longitude}); %>&key=AIzaSyCx6sA8X97IIUluvY66bqPET4xqKf0nT7M">
                     </div>
                     <%- include('../partials/property', { label: 'Vehicle Heading', prop: vehicleLocation.heading, unit: 'deg'}); %>
                         <%- include('../partials/value', { label: 'Latitude', value: vehicleLocation.coordinates.value.latitude, unit: 'deg'}); %>
@@ -26,13 +26,31 @@
                 <section class="card section--diagnostics">
                     <h2>Diagnostics</h2>
                     <div>
-                        <%- include('../partials/property', { label: 'Mileage', prop: diagnostics.mileage, unit: 'km'}); %>
+                        <%- include('../partials/property', { label: 'Odometer', prop: diagnostics.mileage, unit: 'km'}); %>
                         <%- include('../partials/property', { label: 'Speed', prop: diagnostics.wheelBasedSpeed, unit: 'km/h'}); %>
                         
                         <%- include('../partials/property', { label: 'Fuel Volume', prop: diagnostics.fuelVolume, unit: 'liters'}); %>
+                        <%- include('../partials/property', { label: 'Estimated Range', prop: diagnostics.estimatedRange, unit: 'km'}); %>
                         <%- include('../partials/property', { label: 'Engine Coolant Temp', prop: diagnostics.engineCoolantTemperature, unit: 'C'}); %>
                         <%- include('../partials/property', { label: 'Ad Blue Level', prop: diagnostics.adBlueLevel, unit: 'liters'}); %>
                         <!-- Control messages and trouble codes -->
+                    </div>
+                </section>
+
+                <section class="card section--control-messages">
+                    <h2>Control Messages</h2>
+                    <div class="">
+                        <% 
+                        diagnostics.checkControlMessages.forEach((controlMessage) =>{ %>
+                            <div class="tire--block">
+                                
+                                <p>ID: <%- controlMessage.value.ID %></p>
+                                <p>text: <%- controlMessage.value.text %></p>
+                                <!-- <p>status: <%- controlMessage.value.status %></p> -->
+                                <p>remainingMinutes: <%- controlMessage.value.remainingMinutes %></p>
+                                <!-- <p>timestamp: <%- controlMessage.value.timestamp %></p> -->
+                            </div>
+                        <% }); %>
                     </div>
                 </section>
 
@@ -44,49 +62,25 @@
                     </div>
                 </section>
                 
-                <!-- <section class="card section--maintenance">
-                    <h2>Maintenance</h2>
-                    <div>
-                        <%- include('../partials/property', { label: 'Days to Next Service', prop: maintenance.daysToNextService, unit: 'days'}); %>
-                        <%- include('../partials/property', { label: 'Kilometers to Next Service', prop: maintenance.kilometersToNextService, unit: 'km'}); %>
-                        <%- include('../partials/property', { label: 'CBS Reports Count', prop: maintenance.cbsReportsCount, unit: ''}); %>
-                        <%- include('../partials/property', { label: 'Months to Exhaust Inspection', prop: maintenance.monthsToExhaustInspection, unit: 'months'}); %>
-                        <%- include('../partials/property', { label: 'Teleservice Availability', prop: maintenance.teleserviceAvailability, unit: ''}); %>
-                        <%- include('../partials/property', { label: 'Service Time Threshold', prop: maintenance.serviceTimeThreshold, unit: 'months'}); %>
-                        <%- include('../partials/property', { label: 'Next Inspection Date', prop: maintenance.nextInspectionDate, unit: ''}); %>
-                        <%- include('../partials/property', { label: 'Brake Fluid Change Date', prop: maintenance.brakeFluidChangeDate, unit: ''}); %>
 
-                    </div>
-                </section> -->
-                <section class="card section--control-messages" style="display:none;">
-                    <h2>Control Messages</h2>
+
+
+                <section class="card section--cbs">
+                    <h2>Condition Based Services</h2>
                     <div class="">
                         <% 
-                        diagnostics.checkControlMessages.forEach((controlMessage) =>{ %>
+                        maintenance.conditionBasedServices.forEach((conditionBasedService) =>{ %>
                             <div class="tire--block">
-                                <!-- <%- include('../partials/property', { label: 'Mileage', prop: controlMessage.value.ID, unit: 'km'}); %> -->
-                                <p>ID: <%- controlMessage.value.ID %></p>
-                                <p>text: <%- controlMessage.value.text %></p>
-                                <p>status: <%- controlMessage.value.status %></p>
-                                <p>remainingMinutes: <%- controlMessage.value.remainingMinutes %></p>
-                                <!-- <p>timestamp: <%- controlMessage.value.timestamp %></p> -->
-                            </div>
-                        <% }); %>
-                    </div>
-                </section>
+                                <p><b>ID: <%- conditionBasedService.value.id %></b></p>
+                                
+                                <p>Text: <%- conditionBasedService.value.text %></p>
+                                <p>Description: <%- conditionBasedService.value.description %></p>
+                                
+                                <p>Due Date: <%- conditionBasedService.value.month %>/<%- conditionBasedService.value.year %> and status is <%- conditionBasedService.value.dueStatus %></p>
 
-                <section class="card" style="display:none;">
-                    <h2>Condition Based Services</h2>
-                    <div class="section--cbs">
-                        <% 
-                        diagnostics.checkControlMessages.forEach((controlMessage) =>{ %>
-                            <div class="tire--block">
-                                <!-- <%- include('../partials/property', { label: 'Mileage', prop: controlMessage.value.ID, unit: 'km'}); %> -->
-                                <p>ID: <%- controlMessage.value.ID %></p>
-                                <p>text: <%- controlMessage.value.text %></p>
-                                <p>status: <%- controlMessage.value.status %></p>
-                                <p>remainingMinutes: <%- controlMessage.value.remainingMinutes %></p>
-                                <!-- <p>timestamp: <%- controlMessage.value.timestamp %></p> -->
+                                <p>&nbsp;</p>
+                                
+
                             </div>
                         <% }); %>
                     </div>

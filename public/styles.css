@@ -67,8 +67,8 @@ h4 {
 .car-grid {
   display: grid;
   grid-gap: 2vw;
-  max-width: 1600px;
-  width: 100%;
+  
+  width: 90%;
   /* margin: 0 auto; */
   padding: 20px;
 }
@@ -96,7 +96,7 @@ h4 {
 
 .section--position {
   grid-column-start: 1;
-  grid-column-end: 5;
+  grid-column-end: 4;
   grid-row-start: 1;
   grid-row-end: 5;
 
@@ -104,15 +104,22 @@ h4 {
 
 .section--diagnostics {
   grid-column-start: 4;
-  grid-column-end: 8;
+  grid-column-end: 6;
   grid-row-start: 1;
-  grid-row-end: 3;
+  grid-row-end: 4;
 }
 
-.section--doors {
-  grid-column-start: 1;
-  grid-column-end: 4;
+.section--cbs {
+  grid-column-start: 6;
+  grid-column-end: 9;
   grid-row-start: 1;
+  grid-row-end:6;
+}
+
+.section--control-messages {
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row-start: 4;
 }
 
 .tires--list,
