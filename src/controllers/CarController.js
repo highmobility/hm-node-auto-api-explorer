@@ -9,8 +9,8 @@ class CarController {
   async renderCarView(req, res) {
     const diagnostics = await HmkitServices.getDiagnostics(req.session);
     const doorsData = await HmkitServices.getDoorLocks(req.session);
-    
-    const tires = diagnostics.tirePressures.map(({ value: { location, pressure } }) => {
+
+    const tires = diagnostics.tirePressures ? diagnostics.tirePressures.map(({ value: { location, pressure } }) => {
       const tireTemperatureData = diagnostics.tireTemperatures.find(
         tempData => tempData.value.location === location
       );
@@ -25,9 +25,9 @@ class CarController {
         temperature: tireTemperatureData.value.temperature,
         wheelRpm: wheelRpmData.value.RPM
       };
-    });
+    }) : [];
     
-    const doors = doorsData.positions.filter(pos => {
+    const doors = doorsData.positions ? doorsData.positions.filter(pos => {
       return !(pos && pos.value.location === 'all')
     }).map(({ value: { location, position } }) => {
       const currentLock = doorsData.locks.find(lock => lock.value.location === location);
@@ -37,7 +37,7 @@ class CarController {
         position,
         lock: currentLock ? currentLock.value.lockState : null
       };
-    });
+    }) : [];
 
     res.render('pages/car.ejs', { diagnostics, doors, tires });
   }

@@ -1,6 +1,6 @@
 <%if (prop) { %>
 <div class="property">
   <span><%= label %></span>
-  <span><%= unit === "%" ? Math.floor(prop.value * 100) : prop.value %> <%= unit %></span>
+  <span><%= unit === "%" ? Math.floor(prop.value * 100) : (typeof prop.value === 'object' ? Object.values(prop.value)[0] : prop.value) %> <%= unit %></span>
 </div>
 <% } %>

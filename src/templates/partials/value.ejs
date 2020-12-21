@@ -1,6 +1,6 @@
 <%if (value !== null && value !== undefined) { %>
     <div class="property">
         <span><%= label %></span>
-        <span><%= value %> <%= unit %></span>
+        <span><%= typeof value === 'object' ? Object.values(value)[0] : value %> <%= unit %></span>
     </div>
 <% } %>
