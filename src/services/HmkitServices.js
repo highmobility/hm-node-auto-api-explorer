@@ -8,25 +8,19 @@ class HmkitServices {
   }
 
   /*
-   * getDiagnostics()
+   * getData()
    *
    * session - this is used to get or download and save access certificate
    *
-   * Fetches diagnostics capability data from your vehicle.
+   * Fetches diagnostics and doors capability data from your vehicle.
    */
-  getDiagnostics(session) {
-    return this.sendCommand(session, this.hmkit.commands.Diagnostics.getState());
-  }
-
-  /*
-   * getDoorLocks()
-   *
-   * session - this is used to get or download and save access certificate
-   *
-   * Fetches door locks capability data from your vehicle.
-   */
-  getDoorLocks(session) {
-    return this.sendCommand(session, this.hmkit.commands.Doors.getState());
+  getData(session) {
+    return this.sendCommand(session, this.hmkit.commands.MultiCommand.multiCommand({
+      multiCommands: [
+        this.hmkit.commands.Diagnostics.getState(),
+        this.hmkit.commands.Doors.getState(),
+      ]
+    }));
   }
 
   /*

@@ -3,39 +3,45 @@ const HmkitServices = require('../services/HmkitServices');
 class CarController {
   /*
    * renderCarView()
-   *
+   * 
    * We will ask for diagnostics and doors data from the vehicle and display it in our dashboard view.
    */
   async renderCarView(req, res) {
-    const diagnostics = await HmkitServices.getDiagnostics(req.session);
-    const doorsData = await HmkitServices.getDoorLocks(req.session);
+    const carData = await HmkitServices.getData(req.session);
+    const [diagnosticsResponse, doorsResponse] = carData.multiStates;
+    const diagnostics = diagnosticsResponse.data.diagnostics;
+    const doorsData = doorsResponse.data.doors;
 
-    const tires = diagnostics.tirePressures ? diagnostics.tirePressures.map(({ value: { location, pressure } }) => {
-      const tireTemperatureData = diagnostics.tireTemperatures.find(
-        tempData => tempData.value.location === location
+    const tires = diagnostics.tirePressures ? diagnostics.tirePressures.map(tirePressure => {
+      const location = tirePressure.data.location;
+      const pressure = tirePressure.data.pressure;
+      const tireTemperature = diagnostics.tireTemperatures.find(
+        tempData => tempData.data.location.value === location.value
       );
 
       const wheelRpmData = diagnostics.wheelRPMs.find(
-        rpmData => rpmData.value.location === location
+        rpmData => rpmData.data.location.value === location.value
       );
 
       return {
         location,
         pressure,
-        temperature: tireTemperatureData.value.temperature,
-        wheelRpm: wheelRpmData.value.RPM
+        temperature: tireTemperature.data.temperature,
+        wheelRpm: wheelRpmData.data.RPM
       };
     }) : [];
     
     const doors = doorsData.positions ? doorsData.positions.filter(pos => {
-      return !(pos && pos.value.location === 'all')
-    }).map(({ value: { location, position } }) => {
-      const currentLock = doorsData.locks.find(lock => lock.value.location === location);
+      return !(pos && pos.data.location.value === 'all')
+    }).map(doorData => {
+      const location = doorData.data.location;
+      const position = doorData.data.position;
+      const currentLock = doorsData.locks.find(lock => lock.data.location.value === location.value);
 
       return {
         location,
         position,
-        lock: currentLock ? currentLock.value.lockState : null
+        lock: currentLock ? currentLock.data.lockState : null
       };
     }) : [];
 

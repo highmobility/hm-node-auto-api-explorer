@@ -123,15 +123,21 @@ h4 {
   margin: 14px 0;
 }
 
-.property span:first-child {
+.property__label {
   font-size: 14px;
   color: #888888;
   font-weight: 300;
 }
 
-.property span:last-child {
+.property__value {
   font-size: 14px;
   color: #333;
   text-transform: uppercase;
   padding-left: 6px;
+}
+
+.property__unit {
+  font-size: 8px;
+  color: #333;
+  text-transform: uppercase;
 }
