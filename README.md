@@ -11,8 +11,8 @@ This project should give you an overview of how to implement [High Mobility's](h
 ## Requirements
 * [Node v8.9.0+](https://nodejs.org/en/)
 * [High mobility developer user account](https://high-mobility.com)
-	* Vehicle (with *diagnostics* and *door locks* capabilities)
-	* Cloud app (with *diagnostics* and *door locks* permissions)
+	* Vehicle (with *multi command*, *diagnostics*, and *door locks* capabilities)
+	* Cloud app (with *multi command*, *diagnostics*, and *door locks* permissions)
 
 ## Getting started
 
@@ -39,7 +39,7 @@ Create a .env config file based on .env.example
 cp .env.example .env
 ```
 
-You need to configure all 7 missing variables. To do so, log in to the High Mobility [developer center](https://high-mobility.com/develop). Firstly, you need a *cloud app* and a *vehicle* which are linked. The vehicle needs to support *diagnostics* and *door locks* capabilities, and the app needs to have permissions for them.
+You need to configure all 7 missing variables. To do so, log in to the High Mobility [developer center](https://high-mobility.com/develop). Firstly, you need a *cloud app* and a *vehicle* which are linked. The vehicle needs to support *multi command*, *diagnostics* and *door locks* capabilities, and the app needs to have permissions for them.
 
 * **`HM_APP_ID`** - This is displayed on your cloud app's page and is labelled "Serial #". If you do not have a cloud app, create a new one and link it to your vehicle.
 * **`HM_CLIENT_CERTIFICATE`** and **`HM_CLIENT_PRIVATE_KEY`** are also displayed at your cloud app's page. You can see *Node* and *REST* snippets if you navigate to *CLIENT CERITFICATE* tab. The certificate and private key that we need are used in *Node* snippet as HMKit constructor parameters. The first parameter is the client certificate and the second parameter is the private key.
