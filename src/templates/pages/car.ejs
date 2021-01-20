@@ -32,26 +32,28 @@
                 <section class="card section--diagnostics">
                     <h2>Diagnostics</h2>
                     <div>
-                        <%- include('../partials/property', { label: 'Mileage', prop: diagnostics.mileage.data }); %>
-                        <%- include('../partials/property', { label: 'Oil temperature', prop: diagnostics.engineOilTemperature.data }); %>
-                        <%- include('../partials/property', { label: 'Engine RPM', prop: diagnostics.engineRPM.data }); %>
-                        <%- include('../partials/property', { label: 'Fuel level', prop: diagnostics.fuelLevel.data }); %>
-                        <%- include('../partials/property', { label: 'Estimated range', prop: diagnostics.estimatedRange.data }); %>
-                        <%- include('../partials/property', { label: 'Washer fluid level', prop: diagnostics.washerFluidLevel.data }); %>
-                        <%- include('../partials/property', { label: 'Battery voltage', prop: diagnostics.batteryVoltage.data }); %>
-                        <%- include('../partials/property', { label: 'AdBlue level', prop: diagnostics.adBlueLevel.data }); %>
-                        <%- include('../partials/property', { label: 'Distance since reset', prop: diagnostics.distanceSinceReset.data }); %>
-                        <%- include('../partials/property', { label: 'Distance since start', prop: diagnostics.distanceSinceStart.data }); %>
-                        <%- include('../partials/property', { label: 'Fuel volume', prop: diagnostics.fuelVolume.data }); %>
-                        <%- include('../partials/property', { label: 'Anti lock braking', prop: diagnostics.antiLockBraking.data }); %>
-                        <%- include('../partials/property', { label: 'Engine coolant temperature', prop: diagnostics.engineCoolantTemperature.data }); %>
-                        <%- include('../partials/property', { label: 'Engine total operating hours', prop: diagnostics.engineTotalOperatingHours.data }); %>
-                        <%- include('../partials/property', { label: 'Engine total fuel consumption', prop: diagnostics.engineTotalFuelConsumption.data }); %>
-                        <%- include('../partials/property', { label: 'Brake fluid level', prop: diagnostics.brakeFluidLevel.data }); %>
-                        <%- include('../partials/property', { label: 'Engine torque', prop: diagnostics.engineTorque.data }); %>
-                        <%- include('../partials/property', { label: 'Engine load', prop: diagnostics.engineLoad.data }); %>
-                        <%- include('../partials/property', { label: 'Wheel based speed', prop: diagnostics.wheelBasedSpeed.data }); %>
-                        <%- include('../partials/property', { label: 'Battery level', prop: diagnostics.batteryLevel.data }); %>
+                        <%- include('../partials/property', { label: 'Odometer', prop: diagnostics.odometer && diagnostics.odometer.data }); %>
+                        <%- include('../partials/property', { label: 'Speed', prop: diagnostics.speed && diagnostics.speed.data }); %>
+                        <%- include('../partials/property', { label: 'Mileage', prop: diagnostics.mileage && diagnostics.mileage.data }); %>
+                        <%- include('../partials/property', { label: 'Oil temperature', prop: diagnostics.engineOilTemperature && diagnostics.engineOilTemperature.data }); %>
+                        <%- include('../partials/property', { label: 'Engine RPM', prop: diagnostics.engineRPM && diagnostics.engineRPM.data }); %>
+                        <%- include('../partials/property', { label: 'Fuel level', prop: diagnostics.fuelLevel && diagnostics.fuelLevel.data }); %>
+                        <%- include('../partials/property', { label: 'Estimated range', prop: diagnostics.estimatedRange && diagnostics.estimatedRange.data }); %>
+                        <%- include('../partials/property', { label: 'Washer fluid level', prop: diagnostics.washerFluidLevel && diagnostics.washerFluidLevel.data }); %>
+                        <%- include('../partials/property', { label: 'Battery voltage', prop: diagnostics.batteryVoltage && diagnostics.batteryVoltage.data }); %>
+                        <%- include('../partials/property', { label: 'AdBlue level', prop: diagnostics.adBlueLevel && diagnostics.adBlueLevel.data }); %>
+                        <%- include('../partials/property', { label: 'Distance since reset', prop: diagnostics.distanceSinceReset && diagnostics.distanceSinceReset.data }); %>
+                        <%- include('../partials/property', { label: 'Distance since start', prop: diagnostics.distanceSinceStart && diagnostics.distanceSinceStart.data }); %>
+                        <%- include('../partials/property', { label: 'Fuel volume', prop: diagnostics.fuelVolume && diagnostics.fuelVolume.data }); %>
+                        <%- include('../partials/property', { label: 'Anti lock braking', prop: diagnostics.antiLockBraking && diagnostics.antiLockBraking.data }); %>
+                        <%- include('../partials/property', { label: 'Engine coolant temperature', prop: diagnostics.engineCoolantTemperature && diagnostics.engineCoolantTemperature.data }); %>
+                        <%- include('../partials/property', { label: 'Engine total operating hours', prop: diagnostics.engineTotalOperatingHours && diagnostics.engineTotalOperatingHours.data }); %>
+                        <%- include('../partials/property', { label: 'Engine total fuel consumption', prop: diagnostics.engineTotalFuelConsumption && diagnostics.engineTotalFuelConsumption.data }); %>
+                        <%- include('../partials/property', { label: 'Brake fluid level', prop: diagnostics.brakeFluidLevel && diagnostics.brakeFluidLevel.data }); %>
+                        <%- include('../partials/property', { label: 'Engine torque', prop: diagnostics.engineTorque && diagnostics.engineTorque.data }); %>
+                        <%- include('../partials/property', { label: 'Engine load', prop: diagnostics.engineLoad && diagnostics.engineLoad.data }); %>
+                        <%- include('../partials/property', { label: 'Wheel based speed', prop: diagnostics.wheelBasedSpeed && diagnostics.wheelBasedSpeed.data }); %>
+                        <%- include('../partials/property', { label: 'Battery level', prop: diagnostics.batteryLevel && diagnostics.batteryLevel.data }); %>
                     </div>
                 </section>
 
