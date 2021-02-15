@@ -16,10 +16,14 @@ class HmkitServices {
    */
   getData(session) {
     return this.sendCommand(session, this.hmkit.commands.MultiCommand.multiCommand({
-      multiCommands: [
-        this.hmkit.commands.Diagnostics.getState(),
-        this.hmkit.commands.Doors.getState(),
-      ]
+      multiCommands: {
+        diagnostics: {
+          getState: [],
+        },
+        doors: {
+          getState: []
+        }
+      }
     }));
   }
 

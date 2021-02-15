@@ -15,19 +15,22 @@ class CarController {
     const tires = diagnostics.tirePressures ? diagnostics.tirePressures.map(tirePressure => {
       const location = tirePressure.data.location;
       const pressure = tirePressure.data.pressure;
-      const tireTemperature = diagnostics.tireTemperatures.find(
+
+      const tireTemperatureResponse = diagnostics.tireTemperatures && diagnostics.tireTemperatures.find(
         tempData => tempData.data.location.value === location.value
       );
-
-      const wheelRpmData = diagnostics.wheelRPMs.find(
+      const wheelRpmResponse = diagnostics.wheelRPMs && diagnostics.wheelRPMs.find(
         rpmData => rpmData.data.location.value === location.value
       );
+
+      const temperature = tireTemperatureResponse ? tireTemperatureResponse.data.temperature : {};
+      const RPM = wheelRpmResponse ? wheelRpmResponse.data.RPM : {};
 
       return {
         location,
         pressure,
-        temperature: tireTemperature.data.temperature,
-        wheelRpm: wheelRpmData.data.RPM
+        temperature,
+        RPM
       };
     }) : [];
     
