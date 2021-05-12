@@ -8,12 +8,12 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "dotenv": "^5.0.1",
-    "ejs": "^2.5.9",
-    "express": "^4.16.3",
-    "express-promise-router": "^3.0.2",
-    "express-session": "^1.15.6",
-    "hmkit": "^12.1.0",
+    "dotenv": "^9.0.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-promise-router": "^4.1.0",
+    "express-session": "^1.17.1",
+    "hmkit": "^13.0.0",
     "node-fetch": "^2.6.1"
   }
 }
